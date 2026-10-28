@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Illusion</title>
+  <style>
+    :root { --fg: #f2efe8; --dim: #f2efe899; --line: #f2efe833; }
+    body[data-theme="light"] { --fg: #1d1a16; --dim: #1d1a1699; --line: #1d1a1633; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #07070c; color: var(--fg);
+      font: 14px/1.5 ui-monospace, "SF Mono", Menlo, monospace; transition: color .4s; }
+    canvas { display: block; touch-action: none; }
+    #hud { position: fixed; top: 24px; left: 24px; max-width: 380px; pointer-events: none; }
+    #hud h1 { margin: 0 0 8px; font-size: 13px; letter-spacing: .5em; font-weight: 700; }
+    #hud p { margin: 0; color: var(--dim); }
+    #meter { margin-top: 14px; font-size: 12px; letter-spacing: .15em; }
+    #meter i { display: block; height: 2px; margin-top: 6px; background: var(--fg); width: 0; transition: width .1s; }
+    nav { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); display: flex; gap: 6px;
+      flex-wrap: wrap; justify-content: center; width: calc(100% - 32px); }
+    nav button { font: inherit; color: var(--dim); background: none; border: 1px solid var(--line);
+      padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+    nav button.on, nav button:hover { color: var(--fg); border-color: var(--fg); }
+    #inset { position: fixed; right: 20px; bottom: 80px; width: 260px; height: 180px;
+      border: 1px solid var(--line); border-radius: 6px; pointer-events: none; }
+    #inset span { position: absolute; top: 6px; left: 10px; font-size: 10px; letter-spacing: .3em; color: var(--dim); }
+    @media (max-width: 600px) { #inset { width: 150px; height: 110px; bottom: 120px; right: 16px; } #hud { left: 16px; right: 16px; } }
+  </style>
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <div id="hud">
+    <h1>ILLUSION</h1>
+    <p id="desc"></p>
+    <div id="meter"></div>
+  </div>
+  <div id="inset"><span>THE TRUTH</span></div>
+  <nav></nav>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
